@@ -8,12 +8,12 @@
 (def port 6789)
 (def group  (InetAddress/getByName address))
 
-(defn initComm [addr port]
+(defn initComm []
   (let [s (MulticastSocket. port)]
     (.joinGroup s group)
     s))
 
-(def socket (initComm address port))
+(def socket (initComm))
 
 (defn send-it "Send whatever"
   [message]
