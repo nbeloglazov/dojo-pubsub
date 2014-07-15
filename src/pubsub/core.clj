@@ -8,12 +8,12 @@
 (def port 6789)
 (def group  (InetAddress/getByName address))
 
-(defn initComm []
+(defn init-comm []
   (let [s (MulticastSocket. port)]
     (.joinGroup s group)
     s))
 
-(def socket (initComm))
+(def socket (init-comm))
 
 (defn send-it "Send whatever"
   [message]
@@ -34,7 +34,7 @@
   ([handler]
    (subscribe-with (constantly true) handler))
   ([predicate handler]
-   (let [socket (initComm address port)
+   (let [socket (init-comm)
          finished (promise)]
      (future
        (process-message socket predicate handler finished)
