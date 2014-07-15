@@ -1,17 +1,3 @@
-dojo-pubsub
-===========
-
-PubSub mini-library developed at July Clojure Dojo at uSwitch.
-
-Library provides 2 functions:
-
-* `(send-it message)` - sends message, message is any clojure object.
-* `(subscribe-with handler)`, `(subscribe-with predicate handler)` - subscribes handler. Predicate filters all messages, so only suitable are processed.
-
-Library uses multicast IP address so computers on the same network can communicate without knowing about each other. Basically it is a translation of an example from javadoc to clojure: http://download.java.net/jdk7/archive/b123/docs/api/java/net/MulticastSocket.html
-
-Usage:
-```clojure
 (ns pubsub.example
   (:require [pubsub.core :refer [send-it subscribe-with]]))
 
@@ -37,4 +23,3 @@ Usage:
 (send-it {:topic :dojo :message "PubSub!"})
 (send-it {:topic :work :message "You're at work..."})
 (send-it {:topic :home :message "You're at home..."})
-```
